@@ -1,0 +1,23 @@
+{
+  "ABI version": 2,
+  "version": "2024.12.001",
+  "header": ["time", "expire"],
+  "functions": [
+    {
+      "name": "get_total_supply",
+      "inputs": [],
+      "outputs": [
+        {"name": "total_supply", "type": "uint256"}
+      ]
+    },
+    {
+      "name": "get_circulating_supply",
+      "inputs": [],
+      "outputs": [
+        {"name": "circulating_supply", "type": "uint256"}
+      ]
+    }
+  ],
+  "data": [],
+  "events": []
+}

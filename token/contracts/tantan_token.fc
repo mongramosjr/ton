@@ -1,0 +1,37 @@
+#pragma version ^0.4.0;
+
+;; Imports
+#include "stdlib.fc";
+
+;; Storage scheme
+(slice, int, int, cell) load_data() {
+    var ds = get_data().begin_parse();
+    return (
+        ds~load_msg_addr(),     ;; owner address
+        ds~load_uint(256),      ;; total supply
+        ds~load_uint(256),      ;; circulating supply
+        ds~load_ref()           ;; balances dict
+    );
+}
+
+;; Save contract data
+() save_data(slice owner, int total_supply, int circulating_supply, cell balances) impure {
+    set_data(begin_cell()
+        .store_slice(owner)
+        .store_uint(total_supply, 256)
+        .store_uint(circulating_supply, 256)
+        .store_ref(balances)
+    .end_cell());
+}
+
+;; Get total supply
+int get_total_supply() method_id {
+    var (_, total_supply, _, _) = load_data();
+    return total_supply;
+}
+
+;; Get circulating supply
+int get_circulating_supply() method_id {
+    var (_, _, circulating_supply, _) = load_data();
+    return circulating_supply;
+}
