@@ -8,8 +8,8 @@ set -euo pipefail
 # Project and Tool Paths
 PROJECT_DIR=/home/mong/mong_projects/ton/token
 FUNC_COMPILER=/home/mong/mong_projects/ton-dev/ton/build/crypto/func
-TON_CLIENT=/home/mong/mong_projects/ton-dev/ton-client  # Update with actual path
-TONOS_CLI=/home/mong/mong_projects/tonos-cli/bin/tonos-cli  # Update with actual path
+TON_CLIENT=/home/mong/mong_projects/ton-dev/ton/build/  # Update with actual path
+TONOS_CLI=/home/mong/mong_projects/tonos-cli/target/release/ever-cli  # Update with actual path
 
 # Token Contract Parameters
 TOKEN_NAME="TanTan"
@@ -21,14 +21,20 @@ DECIMALS=9
 OWNER_WALLET="0QC_Xqe8BRH4sr58r5z3AZuYSQRH-GhA0KnSYtUtWCYzKRTx"
 NETWORK="testnet"  # Use "mainnet" for prod deployment
 
+# Source and Output Paths
+SOURCE_CONTRACT=$PROJECT_DIR/contracts/tantan_token.fc
+OUTPUT_FIF=$PROJECT_DIR/build/tantan_token.fif
+OUTPUT_BOC=$PROJECT_DIR/build/tantan_token.boc
+
 # Compilation Function (same as in compile.sh)
 compile_contract() {
     echo "Compiling TON Smart Contract..."
 
     $FUNC_COMPILER \
-        -o "$PROJECT_DIR/build/tantan_token.fif" \
+        -o "$OUTPUT_FIF" \
+        -W "$OUTPUT_BOC" \
         -SPA \
-        "$PROJECT_DIR/contracts/tantan_token.fc"
+        "$SOURCE_CONTRACT"
 
     echo "Compilation completed."
 }
@@ -56,7 +62,7 @@ deploy_contract() {
             'decimals': $DECIMALS,
             'total_supply': $TOTAL_SUPPLY
         }" \
-        "$PROJECT_DIR/build/tantan_token.fif"
+        "$OUTPUT_FIF"
 }
 
 # Mint Initial Tokens

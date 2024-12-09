@@ -21,10 +21,11 @@ compile_contract() {
     # Compile FunC to Fift Assembler
     $FUNC_COMPILER \
         -o "$OUTPUT_FIF" \
+        -W "$OUTPUT_BOC" \
         -SPA \
         "$SOURCE_CONTRACT"
 
-    echo "Compilation completed. Output: $OUTPUT_FIF"
+    echo "Compilation completed. Output: $OUTPUT_FIF $OUTPUT_BOC"
 }
 
 # Validate Compiler
