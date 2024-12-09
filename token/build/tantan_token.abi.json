@@ -16,6 +16,31 @@
       "outputs": [
         {"name": "circulating_supply", "type": "uint256"}
       ]
+    },
+    {
+      "name": "transfer_tokens",
+      "inputs": [
+        {"name": "sender", "type": "address"},
+        {"name": "recipient", "type": "address"},
+        {"name": "amount", "type": "uint256"}
+      ],
+      "outputs": []
+    },
+    {
+      "name": "mint_tokens",
+      "inputs": [
+        {"name": "minter", "type": "address"},
+        {"name": "amount", "type": "uint256"}
+      ],
+      "outputs": []
+    },
+    {
+      "name": "burn_tokens",
+      "inputs": [
+        {"name": "burner", "type": "address"},
+        {"name": "amount", "type": "uint256"}
+      ],
+      "outputs": []
     }
   ],
   "data": [],
