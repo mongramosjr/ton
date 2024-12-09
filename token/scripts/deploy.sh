@@ -12,8 +12,8 @@ TON_CLIENT=/home/mong/mong_projects/ton-dev/ton/build/  # Update with actual pat
 TONOS_CLI=/home/mong/mong_projects/tonos-cli/target/release/ever-cli  # Update with actual path
 
 # Token Contract Parameters
-TOKEN_NAME="TanTan"
-TOKEN_SYMBOL="TNT"
+TOKEN_NAME="ttcoin"
+TOKEN_SYMBOL="TTCOIN"
 TOTAL_SUPPLY=200000000000000  # 200T with 9 decimals
 DECIMALS=9
 
